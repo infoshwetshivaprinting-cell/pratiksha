@@ -291,7 +291,7 @@
 
     <div id="particle-canvas" class="position-absolute w-100 h-100 top-0 start-0 overflow-hidden" style="pointer-events:none; z-index: 1;"></div>
 
-    <audio id="bgMusic" loop src="https://pub-c5e31b5cdafb419a991161d102b35180.r2.dev/heeriye_audio.mp3"></audio>
+    <audio id="bgMusic" muted loop src="https://pub-c5e31b5cdafb419a991161d102b35180.r2.dev/heeriye_audio.mp3"></audio>
 
     <div id="cardStage0" class="card-custom z-2">
         <div class="mb-4">
@@ -350,7 +350,7 @@
 
             <div id="scrollableLetter" class="letter-content">
                 <h5 class="fw-bold text-dark mb-2">Dear Pratiksha,</h5>
-    <p class="text-muted small mb-2">There is a specific kind of sparkle you carry with you—it’s in the way you speak, the way you listen, and the effortless way you make the people around you feel instantly at home.</p>
+    <p class="text-muted small mb-2">There is a specific kind of sparkle you carry with you—it's in the way you speak, the way you listen, and the effortless way you make the people around you feel instantly at home.</p>
     <p class="text-muted small mb-2">As you look back on another beautiful year and step into this new one, I hope you realize how deeply appreciated you are. I hope today reminds you that your presence is a gift to this world, especially to me.</p>
     <p class="text-muted small mb-2">May the days ahead be filled with quiet clarity, loud laughter, unexpected joys, and everything your heart holds closest.</p>
     <p class="fw-bold text-end text-danger mb-0">— Your Special Someone ✨</p>
@@ -394,9 +394,10 @@
 
         // Activates the audio streaming safely under standard click conditions
         function startExperience() {
+            music.muted = false;
             music.volume = 0.5;
             music.play().catch(err => {
-                console.log("Audio contextual connection established successfully.", err);
+                console.log("Audio playback error:", err);
             });
             transitionToStage(1);
         }
