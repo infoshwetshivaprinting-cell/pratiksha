@@ -72,6 +72,8 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             animation: cardEntrance 0.8s ease-out;
             margin: 0 auto;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         @media (max-width: 768px) {
@@ -340,6 +342,98 @@
             100% { transform: translateY(105vh) rotate(360deg); }
         }
 
+        /* Gallery Section */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+            max-width: 100%;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 150px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 12px 30px rgba(255, 77, 109, 0.3);
+        }
+
+        /* Memories Section */
+        .memories-container {
+            background: rgba(255, 182, 193, 0.1);
+            border-left: 4px solid var(--primary-pink);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        .memory-item {
+            font-size: 0.95rem;
+            color: #5a5a5a;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff4d6d;
+            animation: confettiFall 3s ease-in forwards;
+            pointer-events: none;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            font-size: 1.2rem;
+            color: var(--primary-pink);
+            font-weight: 600;
+            margin: 15px 0;
+        }
+
+        /* Star Rating */
+        .star-rating {
+            font-size: 2rem;
+            margin: 15px 0;
+            letter-spacing: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .star-rating span {
+            display: inline-block;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .star-rating span:hover {
+            transform: scale(1.3) rotate(15deg);
+            color: #FFD700;
+        }
+
+        .star-rating span.active {
+            color: #FFD700;
+        }
+
         /* Text Responsiveness */
         .title-section h2 {
             font-size: clamp(1.4rem, 5vw, 1.8rem);
@@ -399,7 +493,7 @@
     <!-- Stage 0: Birthday Quiz -->
     <div id="cardStage0" class="card-custom z-2">
         <div class="mb-3 mb-md-4">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW9pZ3A1bTdnd3Y0bXN6cXd5bXN0Y295b3I3bndpZ3V3OHRreG1pYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/c7stH7vlO8p0s/giphy.gif" class="img-fluid rounded-circle shadow-sm" style="width: clamp(100px, 25vw, 130px); background: white; padding: 5px;" alt="Bears">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW9pZ3A1bTdnd3Y0bXN6cXd5bXN0Y295b3I3bndpZ3V3OHRreG1pYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/c7stH7vlO8p0s/giphy.gif" class="img-fluid rounded-circle shadow-sm" style="width: 130px; background: white; padding: 5px;" alt="Bears">
         </div>
         <div class="title-section">
             <h2 class="fw-bold" style="color: #d63384;">The Birthday Quiz! 🔐</h2>
@@ -464,7 +558,67 @@
                 <p class="text-muted mb-2">May the days ahead be filled with quiet clarity, loud laughter, unexpected joys, and everything your heart holds closest.</p>
                 <p class="fw-bold text-end text-danger mb-0">— Your Special Someone ✨</p>
             </div>
+
+            <button id="btnProceedTo4" class="btn btn-next d-none mt-3" onclick="transitionToStage(4)">See More Magic ✨</button>
         </div>
+    </div>
+
+    <!-- Stage 4: Photo Gallery & Memories -->
+    <div id="cardStage4" class="card-custom z-2 d-none">
+        <h2 class="title-romantic mb-3">Our Beautiful Moments 📸</h2>
+        <p class="text-secondary small mb-3">A collection of memories that make you special:</p>
+        
+        <div class="photo-gallery">
+            <img src="https://via.placeholder.com/200x150?text=Memory+1" alt="Memory 1" class="gallery-img">
+            <img src="https://via.placeholder.com/200x150?text=Memory+2" alt="Memory 2" class="gallery-img">
+            <img src="https://via.placeholder.com/200x150?text=Memory+3" alt="Memory 3" class="gallery-img">
+            <img src="https://via.placeholder.com/200x150?text=Memory+4" alt="Memory 4" class="gallery-img">
+        </div>
+
+        <div class="memories-container">
+            <p class="fw-bold mb-2" style="color: #d63384;">✨ Favorite Memories:</p>
+            <div class="memory-item">🌟 That time you made me laugh so hard...</div>
+            <div class="memory-item">💫 Your genuine kindness towards everyone...</div>
+            <div class="memory-item">⭐ The way you light up when you smile...</div>
+            <div class="memory-item">✨ Every moment spent with you is special...</div>
+        </div>
+
+        <p class="fw-bold text-center mt-3" style="color: #d63384;">Rate how amazing you are:</p>
+        <div class="star-rating" onclick="rateAwesomeness(event)">
+            <span class="rate-star">⭐</span>
+            <span class="rate-star">⭐</span>
+            <span class="rate-star">⭐</span>
+            <span class="rate-star">⭐</span>
+            <span class="rate-star">⭐</span>
+        </div>
+
+        <button id="btnProceedTo5" class="btn btn-next mt-3" onclick="transitionToStage(5)">One Final Surprise 💝</button>
+    </div>
+
+    <!-- Stage 5: Countdown & Final Message -->
+    <div id="cardStage5" class="card-custom z-2 d-none">
+        <h2 class="title-romantic mb-3">A Special Countdown ⏰</h2>
+        
+        <div class="countdown">
+            <p class="text-secondary">Time until your next year of adventures:</p>
+            <div id="countdownTimer" style="font-size: 2rem; color: var(--primary-pink); font-weight: bold; margin: 15px 0;">Loading...</div>
+        </div>
+
+        <div class="memories-container">
+            <p class="fw-bold mb-2" style="color: #d63384;">💕 25 Things I Love About You:</p>
+            <p class="text-muted small mb-2">1. Your contagious smile 😊 | 2. Your compassion 💚 | 3. Your strength 💪 | 4. Your humor 😂 | 5. Your authenticity ✨</p>
+            <p class="text-muted small mb-2">6. The way you listen 👂 | 7. Your ambition 🚀 | 8. Your kindness 💝 | 9. Your creativity 🎨 | 10. Your intelligence 🧠</p>
+            <p class="text-muted small mb-2">11. Your grace 🦢 | 12. Your passion 🔥 | 13. Your loyalty 👑 | 14. Your courage 🦁 | 15. Your beauty 🌹</p>
+            <p class="text-muted small mb-2">16. Your warmth ☀️ | 17. Your energy ⚡ | 18. Your optimism 🌈 | 19. Your uniqueness 💎 | 20. Your heart ❤️</p>
+            <p class="text-muted small mb-0">21. How you inspire me 🌟 | 22. Your laugh 🎵 | 23. Your touch 🤝 | 24. Your presence 👼 | 25. Simply YOU! 👸</p>
+        </div>
+
+        <p class="fw-bold text-center mt-3 p-3" style="color: white; background: linear-gradient(135deg, #ff4d6d, #ff758f); border-radius: 12px; font-size: 1.2rem;">
+            Happy 25th Birthday, Pratiksha! 🎉<br>
+            Here's to another year of being absolutely extraordinary! ✨
+        </p>
+
+        <button class="btn btn-next mt-3" onclick="finalCelebration()">🎊 CELEBRATE! 🎊</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -485,13 +639,11 @@
                 return;
             }
 
-            // Splitting string array elements [YYYY, MM, DD]
             const parts = inputDate.split('-');
             const year = parts[0];
             const month = parts[1];
             const day = parts[2];
 
-            // Validates against June 8th, 2001 perfectly
             if (year === '2001' && month === '06' && day === '08') {
                 errorElement.classList.add('d-none');
                 startExperience();
@@ -516,9 +668,18 @@
             document.getElementById('cardStage1').classList.add('d-none');
             document.getElementById('cardStage2').classList.add('d-none');
             document.getElementById('cardStage3').classList.add('d-none');
+            document.getElementById('cardStage4').classList.add('d-none');
+            document.getElementById('cardStage5').classList.add('d-none');
             
             const nextCard = document.getElementById('cardStage' + targetNum);
             nextCard.classList.remove('d-none');
+
+            if (targetNum === 4) {
+                updatePhotoGallery();
+            }
+            if (targetNum === 5) {
+                startCountdown();
+            }
         }
 
         function triggerPop(balloonId, privateMsg) {
@@ -542,6 +703,7 @@
                 document.getElementById('stage3Title').innerText = "Happy Birthday! 🎉";
                 document.getElementById('actionPrompt').innerHTML = "<strong>Your wish went up to the stars! ⭐</strong>";
                 document.getElementById('secretLetterBox').classList.remove('d-none');
+                document.getElementById('btnProceedTo4').classList.remove('d-none');
                 
                 for (let i = 0; i < 45; i++) {
                     setTimeout(spawnSparkle, i * 70);
@@ -554,6 +716,66 @@
             document.getElementById('envelopeElement').classList.add('open');
             document.getElementById('mobileOpenBtn').classList.add('d-none');
             document.getElementById('scrollableLetter').classList.add('show');
+        }
+
+        function updatePhotoGallery() {
+            const images = document.querySelectorAll('.gallery-img');
+            images.forEach((img, index) => {
+                setTimeout(() => {
+                    img.style.opacity = '0';
+                    img.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => {
+                        img.style.opacity = '1';
+                    }, 100);
+                }, index * 200);
+            });
+        }
+
+        function rateAwesomeness(event) {
+            const stars = document.querySelectorAll('.rate-star');
+            stars.forEach(star => star.classList.remove('active'));
+            
+            if (event.target.classList.contains('rate-star')) {
+                event.target.classList.add('active');
+                let prev = event.target.previousElementSibling;
+                while (prev) {
+                    if (prev.classList.contains('rate-star')) {
+                        prev.classList.add('active');
+                    }
+                    prev = prev.previousElementSibling;
+                }
+            }
+        }
+
+        function startCountdown() {
+            const updateTimer = () => {
+                const now = new Date();
+                let nextBirthday = new Date(now.getFullYear(), 5, 8); // June 8th (month is 0-indexed)
+                if (now > nextBirthday) {
+                    nextBirthday.setFullYear(now.getFullYear() + 1);
+                }
+
+                const diff = nextBirthday - now;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / 1000 / 60) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('countdownTimer').innerHTML = 
+                    `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+            };
+
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        function finalCelebration() {
+            for (let i = 0; i < 100; i++) {
+                setTimeout(spawnConfetti, i * 30);
+            }
+            setTimeout(() => {
+                alert('🎉 Happy 25th Birthday, Pratiksha! 🎉\n\nThank you for being absolutely amazing! 💝');
+            }, 2000);
         }
 
         function spawnSparkle() {
@@ -583,6 +805,20 @@
             
             canvas.appendChild(badge);
             setTimeout(() => badge.remove(), 8000);
+        }
+
+        function spawnConfetti() {
+            const canvas = document.getElementById('particle-canvas');
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            
+            const colors = ['#ff4d6d', '#ff758f', '#ffb3ba', '#ffdfba', '#bdfcc9', '#a8dadc', '#FFD700'];
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            
+            canvas.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 4000);
         }
 
         // Ambient continuous background sparkle emitter
