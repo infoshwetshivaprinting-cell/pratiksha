@@ -14,6 +14,12 @@
             --bg-gradient: linear-gradient(135deg, #2b1055 0%, #75225b 50%, #b13c6e 100%);
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background: var(--bg-gradient);
             min-height: 100vh;
@@ -43,7 +49,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 45px;
+            height: 35px;
             background-image: repeating-linear-gradient(45deg, #ff4d6d 0px, #ff4d6d 20px, #ffb3ba 20px, #ffb3ba 40px, #ffdfba 40px, #ffdfba 60px, #bdfcc9 60px, #bdfcc9 80px);
             clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 95% 100%, 90% 60%, 85% 100%, 80% 60%, 75% 100%, 70% 60%, 65% 100%, 60% 60%, 55% 100%, 50% 60%, 45% 100%, 40% 60%, 35% 100%, 30% 60%, 25% 100%, 20% 60%, 15% 100%, 10% 60%, 5% 100%, 0% 60%);
             opacity: 0.85;
@@ -57,14 +63,33 @@
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 2px solid rgba(255, 255, 255, 0.8);
-            border-radius: 24px;
+            border-radius: 20px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-            max-width: 450px;
-            width: 92%;
-            padding: 35px 25px;
+            max-width: 500px;
+            width: 90%;
+            padding: 30px 20px;
             text-align: center;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             animation: cardEntrance 0.8s ease-out;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .card-custom {
+                width: 95%;
+                padding: 25px 18px;
+                border-radius: 18px;
+                max-width: 420px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-custom {
+                width: 98%;
+                padding: 20px 15px;
+                border-radius: 16px;
+                max-width: 100%;
+            }
         }
 
         @keyframes cardEntrance {
@@ -74,20 +99,25 @@
 
         .title-romantic {
             font-family: 'Caveat', cursive;
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
             color: #d63384;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            margin-bottom: 1rem;
         }
 
         .btn-next {
             background-color: var(--primary-pink);
             color: white;
             border: none;
-            padding: 14px 45px;
+            padding: clamp(10px, 3vw, 14px) clamp(30px, 6vw, 45px);
             font-weight: 600;
+            font-size: clamp(0.9rem, 2vw, 1rem);
             border-radius: 50px;
             box-shadow: 0 8px 20px rgba(255, 77, 109, 0.35);
             transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
         }
 
         .btn-next:hover {
@@ -95,6 +125,10 @@
             transform: translateY(-3px) scale(1.03);
             box-shadow: 0 12px 24px rgba(255, 77, 109, 0.45);
             color: white;
+        }
+
+        .btn-next:active {
+            transform: translateY(-1px) scale(1.01);
         }
 
         .form-control-birthday {
@@ -105,11 +139,15 @@
             font-weight: 500;
             letter-spacing: 1px;
             color: #4a4a4a;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            width: 100%;
+            max-width: 280px;
         }
 
         .form-control-birthday:focus {
             border-color: var(--primary-pink);
             box-shadow: 0 0 0 0.25rem rgba(255, 77, 109, 0.25);
+            outline: none;
         }
 
         /* Floating Message Badges */
@@ -139,14 +177,14 @@
         .balloon-container {
             display: flex;
             justify-content: center;
-            gap: 18px;
+            gap: clamp(12px, 3vw, 18px);
             flex-wrap: wrap;
-            margin: 25px 0;
+            margin: 20px 0;
         }
 
         .balloon {
-            width: 75px;
-            height: 90px;
+            width: clamp(60px, 15vw, 75px);
+            height: clamp(70px, 18vw, 90px);
             border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
             cursor: pointer;
             position: relative;
@@ -159,8 +197,9 @@
             content: "▲";
             position: absolute;
             bottom: -8px;
-            left: 31px;
-            font-size: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(8px, 2vw, 10px);
             opacity: 0.7;
         }
 
@@ -180,22 +219,31 @@
             position: relative;
             cursor: pointer;
             width: 100%;
-            height: 120px;
+            height: clamp(100px, 25vw, 120px);
             background: #fbc4cd;
             border-radius: 0 0 12px 12px;
-            margin: 30px auto;
+            margin: 20px auto 30px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 400px;
         }
 
         .envelope-flap {
             position: absolute;
             top: 0; left: 0; width: 0; height: 0;
-            border-left: 200px solid transparent;
-            border-right: 200px solid transparent;
-            border-top: 70px solid #f9a0ad;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 60px solid #f9a0ad;
             transform-origin: top;
             transition: transform 0.4s ease;
             z-index: 3;
+        }
+
+        @media (max-width: 480px) {
+            .envelope-flap {
+                border-left: 120px solid transparent;
+                border-right: 120px solid transparent;
+                border-top: 50px solid #f9a0ad;
+            }
         }
 
         .envelope-wrapper.open .envelope-flap {
@@ -205,9 +253,9 @@
 
         .heart-seal {
             position: absolute;
-            top: 45px; left: 50%;
+            top: 35px; left: 50%;
             transform: translateX(-50%);
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             color: #ff4d6d;
             z-index: 4;
             transition: all 0.3s ease;
@@ -224,16 +272,17 @@
             border-radius: 12px;
             border: 1px solid #f1ebd9;
             box-shadow: inset 0 0 40px rgba(0,0,0,0.02);
-            padding: 25px;
+            padding: clamp(15px, 4vw, 25px);
             text-align: left;
             max-height: 0;
             opacity: 0;
             overflow: hidden;
             transition: max-height 0.6s ease, opacity 0.4s ease;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
         }
 
         .letter-content.show {
-            max-height: 350px;
+            max-height: 400px;
             opacity: 1;
             overflow-y: auto;
             margin-top: 20px;
@@ -246,7 +295,14 @@
             display: inline-block;
             transition: transform 0.3s ease;
         }
+        
         .cake-ui:hover { transform: scale(1.05); }
+        .cake-ui:active { transform: scale(0.98); }
+
+        .cake-ui img {
+            width: clamp(80px, 20vw, 120px);
+            height: auto;
+        }
 
         .candle-stick {
             width: 8px;
@@ -283,6 +339,53 @@
             0% { transform: translateY(-10px) rotate(0deg); }
             100% { transform: translateY(105vh) rotate(360deg); }
         }
+
+        /* Text Responsiveness */
+        .title-section h2 {
+            font-size: clamp(1.4rem, 5vw, 1.8rem);
+            margin-bottom: 0.8rem;
+        }
+
+        .title-section p {
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+        }
+
+        .text-muted {
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+        }
+
+        /* Mobile Button Fixes */
+        @media (max-width: 480px) {
+            .btn-next {
+                padding: 12px 25px;
+            }
+
+            #mobileOpenBtn {
+                font-size: 0.95rem;
+                padding: 10px 15px;
+            }
+        }
+
+        /* Container centering */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px 10px;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 60px 10px 20px;
+            }
+        }
     </style>
 </head>
 <body class="d-flex justify-content-center align-items-center position-relative min-vh-100">
@@ -293,31 +396,36 @@
 
     <audio id="bgMusic" muted loop src="Slow Motion Angreza Bhaag Milkha Bhaag (pagalall.com).mp3"></audio>
 
+    <!-- Stage 0: Birthday Quiz -->
     <div id="cardStage0" class="card-custom z-2">
-        <div class="mb-4">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW9pZ3A1bTdnd3Y0bXN6cXd5bXN0Y295b3I3bndpZ3V3OHRreG1pYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/c7stH7vlO8p0s/giphy.gif" class="img-fluid rounded-circle shadow-sm" style="width: 130px; background: white; padding: 5px;" alt="Bears">
+        <div class="mb-3 mb-md-4">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW9pZ3A1bTdnd3Y0bXN6cXd5bXN0Y295b3I3bndpZ3V3OHRreG1pYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/c7stH7vlO8p0s/giphy.gif" class="img-fluid rounded-circle shadow-sm" style="width: clamp(100px, 25vw, 130px); background: white; padding: 5px;" alt="Bears">
         </div>
-        <h2 class="fw-bold mb-2" style="color: #d63384; font-size: 1.8rem;">The Birthday Quiz! 🔐</h2>
-        <p class="text-secondary small px-2 mb-4">Pratiksha, enter your exact date of birth to unlock your birthday portal!</p>
+        <div class="title-section">
+            <h2 class="fw-bold" style="color: #d63384;">The Birthday Quiz! 🔐</h2>
+            <p class="text-secondary small px-2">Pratiksha, enter your exact date of birth to unlock your birthday portal!</p>
+        </div>
         
-        <div class="px-3 mb-4">
-            <input type="date" id="dobInput" class="form-control form-control-birthday mx-auto" style="max-width: 280px;">
+        <div class="px-2 px-md-3 mb-4 d-flex flex-column align-items-center">
+            <input type="date" id="dobInput" class="form-control form-control-birthday">
             <div id="dobError" class="text-danger small mt-2 fw-medium d-none">Incorrect date. Hint: You were born on June 8th, 2001! 😉</div>
         </div>
         
-        <button class="btn btn-next btn-lg w-100" style="max-width: 280px;" onclick="verifyBirthday()">Unlock My Surprise 💖</button>
+        <button class="btn btn-next" onclick="verifyBirthday()">Unlock My Surprise 💖</button>
     </div>
 
+    <!-- Stage 1: Welcome Message -->
     <div id="cardStage1" class="card-custom z-2 d-none">
         <h1 class="title-romantic">Happy Birthday, Pratiksha! ✨</h1>
         <p class="fs-5 fw-medium text-dark mb-3">Wishing you a magnificent day! 🎉</p>
-        <p class="text-secondary px-2 mb-4">Every detail of this room was built entirely for you. Let's start with a small interactive game I prepared!</p>
-        <button class="btn btn-next btn-lg" onclick="transitionToStage(2)">Start My Surprise ➡️</button>
+        <p class="text-secondary px-2 mb-4" style="font-size: clamp(0.9rem, 2.5vw, 1rem);">Every detail of this room was built entirely for you. Let's start with a small interactive game I prepared!</p>
+        <button class="btn btn-next" onclick="transitionToStage(2)">Start My Surprise ➡️</button>
     </div>
 
+    <!-- Stage 2: Pop Balloons Game -->
     <div id="cardStage2" class="card-custom z-2 d-none">
-        <h3 class="fw-bold mb-1" style="color: #d63384;">Pop all 4 balloons! 🎈</h3>
-        <p id="gameHint" class="text-muted small fst-italic">Tap each balloon to uncover a tiny hidden truth...</p>
+        <h3 class="fw-bold mb-2" style="color: #d63384;">Pop all 4 balloons! 🎈</h3>
+        <p id="gameHint" class="text-muted small fst-italic px-2">Tap each balloon to uncover a tiny hidden truth...</p>
         
         <div class="balloon-container">
             <div id="ball1" class="balloon" style="background-color: #a8dadc; color: #a8dadc;" onclick="triggerPop('ball1', 'You make standard days feel like a celebration. ✨')"></div>
@@ -325,12 +433,13 @@
             <div id="ball3" class="balloon" style="background-color: #bdfcc9; color: #bdfcc9; animation-delay: 0.2s;" onclick="triggerPop('ball3', 'Incredibly thankful you exist in my world. 🌸')"></div>
             <div id="ball4" class="balloon" style="background-color: #ffdfba; color: #ffdfba; animation-delay: 0.6s;" onclick="triggerPop('ball4', 'You are uniquely wonderful, Pratiksha. ❤️')"></div>
         </div>
-        <button id="btnProceedTo3" class="btn btn-next btn-lg d-none" onclick="transitionToStage(3)">Make a Wish next! ➡️</button>
+        <button id="btnProceedTo3" class="btn btn-next d-none mt-3" onclick="transitionToStage(3)">Make a Wish next! ➡️</button>
     </div>
 
+    <!-- Stage 3: Make a Wish & Letter -->
     <div id="cardStage3" class="card-custom z-2 d-none">
         <h3 class="fw-bold mb-2" style="color: #d63384;" id="stage3Title">Make a Wish! 🎂</h3>
-        <p id="actionPrompt" class="text-secondary small">Click the cake to blow out your birthday candle.</p>
+        <p id="actionPrompt" class="text-secondary small px-2">Click the cake to blow out your birthday candle.</p>
         
         <div id="cakeInteractive" class="cake-ui my-3" onclick="extinguishCandle()">
             <div id="liveFlame" class="candle-flame"></div>
@@ -339,10 +448,10 @@
         </div>
 
         <div id="secretLetterBox" class="d-none">
-            <p class="text-pink mt-3 mb-1 fw-semibold text-decoration-underline" style="color:#d63384;">One Last Thing... ✉️</p>
-            <p class="text-muted small">Tap the heart seal to open your letter</p>
+            <p class="text-dark mt-3 mb-2 fw-semibold text-decoration-underline" style="color:#d63384; font-size: clamp(0.95rem, 2.5vw, 1rem);">One Last Thing... ✉️</p>
+            <p class="text-muted small px-2">Tap the heart seal to open your letter</p>
             
-            <div id="envelopeElement" class="envelope-wrapper d-sm-block d-none" onclick="revealLetterText()">
+            <div id="envelopeElement" class="envelope-wrapper d-none d-sm-block" onclick="revealLetterText()">
                 <div class="envelope-flap"></div>
                 <div class="heart-seal">❤️</div>
             </div>
@@ -350,10 +459,10 @@
 
             <div id="scrollableLetter" class="letter-content">
                 <h5 class="fw-bold text-dark mb-2">Dear Pratiksha,</h5>
-    <p class="text-muted small mb-2">There is a specific kind of sparkle you carry with you—it's in the way you speak, the way you listen, and the effortless way you make the people around you feel instantly at home.</p>
-    <p class="text-muted small mb-2">As you look back on another beautiful year and step into this new one, I hope you realize how deeply appreciated you are. I hope today reminds you that your presence is a gift to this world, especially to me.</p>
-    <p class="text-muted small mb-2">May the days ahead be filled with quiet clarity, loud laughter, unexpected joys, and everything your heart holds closest.</p>
-    <p class="fw-bold text-end text-danger mb-0">— Your Special Someone ✨</p>
+                <p class="text-muted mb-2">There is a specific kind of sparkle you carry with you—it's in the way you speak, the way you listen, and the effortless way you make the people around you feel instantly at home.</p>
+                <p class="text-muted mb-2">As you look back on another beautiful year and step into this new one, I hope you realize how deeply appreciated you are. I hope today reminds you that your presence is a gift to this world, especially to me.</p>
+                <p class="text-muted mb-2">May the days ahead be filled with quiet clarity, loud laughter, unexpected joys, and everything your heart holds closest.</p>
+                <p class="fw-bold text-end text-danger mb-0">— Your Special Someone ✨</p>
             </div>
         </div>
     </div>
