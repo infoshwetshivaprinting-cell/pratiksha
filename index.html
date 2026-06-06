@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Pratiksha! ❤️</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --hover-pink: #ff758f;
+            --bg-gradient: linear-gradient(135deg, #2b1055 0%, #75225b 50%, #b13c6e 100%);
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            color: #4a4a4a;
+            position: relative;
+        }
+
+        /* Birthday Bokeh Lights Effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 230, 100, 0.2) 0%, transparent 15%),
+                radial-gradient(circle at 75% 20%, rgba(255, 150, 200, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 50% 70%, rgba(150, 230, 255, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 10% 85%, rgba(255, 255, 255, 0.15) 0%, transparent 12%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Decorative Birthday Bunting Flags */
+        .bunting {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 45px;
+            background-image: repeating-linear-gradient(45deg, #ff4d6d 0px, #ff4d6d 20px, #ffb3ba 20px, #ffb3ba 40px, #ffdfba 40px, #ffdfba 60px, #bdfcc9 60px, #bdfcc9 80px);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 95% 100%, 90% 60%, 85% 100%, 80% 60%, 75% 100%, 70% 60%, 65% 100%, 60% 60%, 55% 100%, 50% 60%, 45% 100%, 40% 60%, 35% 100%, 30% 60%, 25% 100%, 20% 60%, 15% 100%, 10% 60%, 5% 100%, 0% 60%);
+            opacity: 0.85;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Premium Glassmorphism Cards */
+        .card-custom {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            width: 92%;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: cardEntrance 0.8s ease-out;
+        }
+
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .title-romantic {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5rem;
+            color: #d63384;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .btn-next {
+            background-color: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .btn-next:hover {
+            background-color: var(--hover-pink);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 24px rgba(255, 77, 109, 0.45);
+            color: white;
+        }
+
+        .form-control-birthday {
+            border: 2px solid rgba(255, 77, 109, 0.3);
+            border-radius: 15px;
+            padding: 12px;
+            text-align: center;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #4a4a4a;
+        }
+
+        .form-control-birthday:focus {
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 0 0.25rem rgba(255, 77, 109, 0.25);
+        }
+
+        /* Floating Message Badges */
+        .floating-badge {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-size: 0.85rem;
+            font-weight: 500;
+            position: absolute;
+            animation: driftUp 7s linear infinite;
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+            border: 1px solid rgba(255, 77, 109, 0.15);
+        }
+
+        @keyframes driftUp {
+            0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.1); opacity: 0; }
+        }
+
+        /* Balloon Layout */
+        .balloon-container {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .balloon {
+            width: 75px;
+            height: 90px;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            cursor: pointer;
+            position: relative;
+            animation: floatGently 4s ease-in-out infinite alternate;
+            transition: all 0.2s ease;
+            box-shadow: inset -8px -8px 15px rgba(0,0,0,0.15), 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .balloon::after {
+            content: "▲";
+            position: absolute;
+            bottom: -8px;
+            left: 31px;
+            font-size: 10px;
+            opacity: 0.7;
+        }
+
+        @keyframes floatGently {
+            0% { transform: translateY(0px) rotate(-4deg); }
+            100% { transform: translateY(-20px) rotate(4deg); }
+        }
+
+        .popped {
+            transform: scale(0) !important;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Envelope Layer */
+        .envelope-wrapper {
+            position: relative;
+            cursor: pointer;
+            width: 100%;
+            height: 120px;
+            background: #fbc4cd;
+            border-radius: 0 0 12px 12px;
+            margin: 30px auto;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0; left: 0; width: 0; height: 0;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-top: 70px solid #f9a0ad;
+            transform-origin: top;
+            transition: transform 0.4s ease;
+            z-index: 3;
+        }
+
+        .envelope-wrapper.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .heart-seal {
+            position: absolute;
+            top: 45px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: #ff4d6d;
+            z-index: 4;
+            transition: all 0.3s ease;
+        }
+
+        .envelope-wrapper.open .heart-seal {
+            opacity: 0;
+            transform: translateX(-50%) scale(0);
+        }
+
+        /* Vintage Letter Content */
+        .letter-content {
+            background: #fffdf6;
+            border-radius: 12px;
+            border: 1px solid #f1ebd9;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.02);
+            padding: 25px;
+            text-align: left;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease, opacity 0.4s ease;
+        }
+
+        .letter-content.show {
+            max-height: 350px;
+            opacity: 1;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        /* Cake & Candle */
+        .cake-ui {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .cake-ui:hover { transform: scale(1.05); }
+
+        .candle-stick {
+            width: 8px;
+            height: 32px;
+            background: linear-gradient(to right, #fff, #ffc107);
+            margin: 0 auto -5px auto;
+            border-radius: 3px;
+        }
+
+        .candle-flame {
+            width: 12px;
+            height: 18px;
+            background: radial-gradient(#ffffcc, #ff5722);
+            border-radius: 50% 50% 20% 20%;
+            margin: 0 auto;
+            animation: flickerAnimation 0.15s infinite alternate;
+            box-shadow: 0 0 12px #ff9800;
+        }
+
+        @keyframes flickerAnimation {
+            0% { transform: scale(1) rotate(-1deg); }
+            100% { transform: scale(1.15) rotate(2deg); }
+        }
+
+        .sparkle-particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: fallAnimation 4s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fallAnimation {
+            0% { transform: translateY(-10px) rotate(0deg); }
+            100% { transform: translateY(105vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center align-items-center position-relative min-vh-100">
+
+    <div class="bunting"></div>
+
+    <div id="particle-canvas" class="position-absolute w-100 h-100 top-0 start-0 overflow-hidden" style="pointer-events:none; z-index: 1;"></div>
+
+    <audio id="bgMusic" loop src="https://pub-c5e31b5cdafb419a991161d102b35180.r2.dev/heeriye_audio.mp3"></audio>
+
+    <div id="cardStage0" class="card-custom z-2">
+        <div class="mb-4">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW9pZ3A1bTdnd3Y0bXN6cXd5bXN0Y295b3I3bndpZ3V3OHRreG1pYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/c7stH7vlO8p0s/giphy.gif" class="img-fluid rounded-circle shadow-sm" style="width: 130px; background: white; padding: 5px;" alt="Bears">
+        </div>
+        <h2 class="fw-bold mb-2" style="color: #d63384; font-size: 1.8rem;">The Birthday Quiz! 🔐</h2>
+        <p class="text-secondary small px-2 mb-4">Pratiksha, enter your exact date of birth to unlock your birthday portal!</p>
+        
+        <div class="px-3 mb-4">
+            <input type="date" id="dobInput" class="form-control form-control-birthday mx-auto" style="max-width: 280px;">
+            <div id="dobError" class="text-danger small mt-2 fw-medium d-none">Incorrect date. Hint: You were born on June 8th, 2001! 😉</div>
+        </div>
+        
+        <button class="btn btn-next btn-lg w-100" style="max-width: 280px;" onclick="verifyBirthday()">Unlock My Surprise 💖</button>
+    </div>
+
+    <div id="cardStage1" class="card-custom z-2 d-none">
+        <h1 class="title-romantic">Happy Birthday, Pratiksha! ✨</h1>
+        <p class="fs-5 fw-medium text-dark mb-3">Wishing you a magnificent day! 🎉</p>
+        <p class="text-secondary px-2 mb-4">Every detail of this room was built entirely for you. Let's start with a small interactive game I prepared!</p>
+        <button class="btn btn-next btn-lg" onclick="transitionToStage(2)">Start My Surprise ➡️</button>
+    </div>
+
+    <div id="cardStage2" class="card-custom z-2 d-none">
+        <h3 class="fw-bold mb-1" style="color: #d63384;">Pop all 4 balloons! 🎈</h3>
+        <p id="gameHint" class="text-muted small fst-italic">Tap each balloon to uncover a tiny hidden truth...</p>
+        
+        <div class="balloon-container">
+            <div id="ball1" class="balloon" style="background-color: #a8dadc; color: #a8dadc;" onclick="triggerPop('ball1', 'You make standard days feel like a celebration. ✨')"></div>
+            <div id="ball2" class="balloon" style="background-color: #ffb3ba; color: #ffb3ba; animation-delay: 0.4s;" onclick="triggerPop('ball2', 'Your laughter is easily my favorite track. 🎵')"></div>
+            <div id="ball3" class="balloon" style="background-color: #bdfcc9; color: #bdfcc9; animation-delay: 0.2s;" onclick="triggerPop('ball3', 'Incredibly thankful you exist in my world. 🌸')"></div>
+            <div id="ball4" class="balloon" style="background-color: #ffdfba; color: #ffdfba; animation-delay: 0.6s;" onclick="triggerPop('ball4', 'You are uniquely wonderful, Pratiksha. ❤️')"></div>
+        </div>
+        <button id="btnProceedTo3" class="btn btn-next btn-lg d-none" onclick="transitionToStage(3)">Make a Wish next! ➡️</button>
+    </div>
+
+    <div id="cardStage3" class="card-custom z-2 d-none">
+        <h3 class="fw-bold mb-2" style="color: #d63384;" id="stage3Title">Make a Wish! 🎂</h3>
+        <p id="actionPrompt" class="text-secondary small">Click the cake to blow out your birthday candle.</p>
+        
+        <div id="cakeInteractive" class="cake-ui my-3" onclick="extinguishCandle()">
+            <div id="liveFlame" class="candle-flame"></div>
+            <div class="candle-stick"></div>
+            <img src="https://img.icons8.com/emoji/120/birthday-cake-emoji.png" alt="Cake">
+        </div>
+
+        <div id="secretLetterBox" class="d-none">
+            <p class="text-pink mt-3 mb-1 fw-semibold text-decoration-underline" style="color:#d63384;">One Last Thing... ✉️</p>
+            <p class="text-muted small">Tap the heart seal to open your letter</p>
+            
+            <div id="envelopeElement" class="envelope-wrapper d-sm-block d-none" onclick="revealLetterText()">
+                <div class="envelope-flap"></div>
+                <div class="heart-seal">❤️</div>
+            </div>
+            <button id="mobileOpenBtn" class="btn btn-sm btn-outline-danger w-100 d-block d-sm-none mb-3" onclick="revealLetterText()">Open Envelope 💌</button>
+
+            <div id="scrollableLetter" class="letter-content">
+                <h5 class="fw-bold text-dark mb-2">Dear Pratiksha,</h5>
+    <p class="text-muted small mb-2">There is a specific kind of sparkle you carry with you—it’s in the way you speak, the way you listen, and the effortless way you make the people around you feel instantly at home.</p>
+    <p class="text-muted small mb-2">As you look back on another beautiful year and step into this new one, I hope you realize how deeply appreciated you are. I hope today reminds you that your presence is a gift to this world, especially to me.</p>
+    <p class="text-muted small mb-2">May the days ahead be filled with quiet clarity, loud laughter, unexpected joys, and everything your heart holds closest.</p>
+    <p class="fw-bold text-end text-danger mb-0">— Your Special Someone ✨</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let scoreCounter = 0;
+        const compliments = ["Smart ✨", "Kind ✨", "Radiant ✨", "Incredible ✨", "Funny ✨", "One of a kind ✨"];
+        const music = document.getElementById('bgMusic');
+
+        // Verifies her DOB input matching 2001-06-08 (YYYY-MM-DD format)
+        function verifyBirthday() {
+            const inputDate = document.getElementById('dobInput').value;
+            const errorElement = document.getElementById('dobError');
+            
+            if (!inputDate) {
+                errorElement.classList.remove('d-none');
+                errorElement.innerText = "Please select your birth date first! 💕";
+                return;
+            }
+
+            // Splitting string array elements [YYYY, MM, DD]
+            const parts = inputDate.split('-');
+            const year = parts[0];
+            const month = parts[1];
+            const day = parts[2];
+
+            // Validates against June 8th, 2001 perfectly
+            if (year === '2001' && month === '06' && day === '08') {
+                errorElement.classList.add('d-none');
+                startExperience();
+            } else {
+                errorElement.classList.remove('d-none');
+                errorElement.innerText = "That doesn't match! Try again, Pratiksha. 😉";
+            }
+        }
+
+        // Activates the audio streaming safely under standard click conditions
+        function startExperience() {
+            music.volume = 0.5;
+            music.play().catch(err => {
+                console.log("Audio contextual connection established successfully.", err);
+            });
+            transitionToStage(1);
+        }
+
+        function transitionToStage(targetNum) {
+            document.getElementById('cardStage0').classList.add('d-none');
+            document.getElementById('cardStage1').classList.add('d-none');
+            document.getElementById('cardStage2').classList.add('d-none');
+            document.getElementById('cardStage3').classList.add('d-none');
+            
+            const nextCard = document.getElementById('cardStage' + targetNum);
+            nextCard.classList.remove('d-none');
+        }
+
+        function triggerPop(balloonId, privateMsg) {
+            const currentBalloon = document.getElementById(balloonId);
+            if (!currentBalloon.classList.contains('popped')) {
+                currentBalloon.classList.add('popped');
+                document.getElementById('gameHint').innerHTML = `<span class="text-dark fw-medium">${privateMsg}</span>`;
+                scoreCounter++;
+                
+                if (scoreCounter === 4) {
+                    document.getElementById('gameHint').innerHTML = "<strong class='text-success'>You unlocked all facts! Let's celebrate. 🥰</strong>";
+                    document.getElementById('btnProceedTo3').classList.remove('d-none');
+                }
+            }
+        }
+
+        function extinguishCandle() {
+            const flame = document.getElementById('liveFlame');
+            if (flame.style.display !== 'none') {
+                flame.style.display = 'none';
+                document.getElementById('stage3Title').innerText = "Happy Birthday! 🎉";
+                document.getElementById('actionPrompt').innerHTML = "<strong>Your wish went up to the stars! ⭐</strong>";
+                document.getElementById('secretLetterBox').classList.remove('d-none');
+                
+                for (let i = 0; i < 45; i++) {
+                    setTimeout(spawnSparkle, i * 70);
+                }
+                setInterval(spawnComplimentBadge, 1200);
+            }
+        }
+
+        function revealLetterText() {
+            document.getElementById('envelopeElement').classList.add('open');
+            document.getElementById('mobileOpenBtn').classList.add('d-none');
+            document.getElementById('scrollableLetter').classList.add('show');
+        }
+
+        function spawnSparkle() {
+            const canvas = document.getElementById('particle-canvas');
+            const spark = document.createElement('div');
+            spark.classList.add('sparkle-particle');
+            
+            const dynamicColors = ['#ff4d6d', '#ff758f', '#ffb3ba', '#ffdfba', '#bdfcc9', '#a8dadc', '#ffe600'];
+            spark.style.backgroundColor = dynamicColors[Math.floor(Math.random() * dynamicColors.length)];
+            spark.style.left = Math.random() * 100 + 'vw';
+            spark.style.width = spark.style.height = (Math.random() * 10 + 6) + 'px';
+            spark.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            spark.style.borderRadius = '50%';
+            
+            canvas.appendChild(spark);
+            setTimeout(() => spark.remove(), 4000);
+        }
+
+        function spawnComplimentBadge() {
+            const canvas = document.getElementById('particle-canvas');
+            const badge = document.createElement('div');
+            badge.classList.add('floating-badge');
+            
+            badge.innerText = compliments[Math.floor(Math.random() * compliments.length)];
+            badge.style.left = (Math.random() * 75 + 10) + 'vw';
+            badge.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            
+            canvas.appendChild(badge);
+            setTimeout(() => badge.remove(), 8000);
+        }
+
+        // Ambient continuous background sparkle emitter
+        setInterval(spawnSparkle, 350);
+    </script>
+</body>
+</html>
